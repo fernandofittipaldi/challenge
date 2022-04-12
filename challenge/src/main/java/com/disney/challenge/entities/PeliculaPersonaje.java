@@ -1,4 +1,4 @@
-package com.disney.challenge.models;
+package com.disney.challenge.entities;
 
 public class PeliculaPersonaje {
 	

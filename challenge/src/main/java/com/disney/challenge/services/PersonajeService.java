@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.disney.challenge.models.Personaje;
+import com.disney.challenge.entities.Personaje;
 import com.disney.challenge.repositories.PersonajeRepository;
 
 @Service
@@ -17,8 +17,24 @@ public class PersonajeService {
 		return (ArrayList<Personaje>) personajeRepository.findAll();
 	}
 	
-	public void guardarPersonaje(Personaje personaje) {
-		personajeRepository.save(personaje);
+	public Personaje guardarPersonaje(Personaje personaje) {
+		return personajeRepository.save(personaje);
 	}
-
+	
+	public Personaje buscarPorNombre(String nombre){
+		return personajeRepository.findByNombre(nombre);
+	}
+	
+	public boolean eliminarPersonaje(int id) {
+		boolean resultado = false;
+		
+		try {
+			personajeRepository.deleteById(id);;
+			resultado = true; 
+		} catch(Exception error) {
+			resultado = false; 
+		}
+		
+		return resultado; 
+	}
 }
