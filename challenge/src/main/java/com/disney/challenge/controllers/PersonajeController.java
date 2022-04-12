@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ import com.disney.challenge.services.PersonajeService;
 import antlr.collections.List;
 
 @RestController
-@RequestMapping("/personaje")
+@RequestMapping("/characters")
 public class PersonajeController {
 	@Autowired
 	PersonajeService personajeService; 
@@ -31,11 +32,14 @@ public class PersonajeController {
 	}
 	
 	@PostMapping()
-	public Personaje guardarPersonaje(@RequestBody Personaje personaje) {
-		return personajeService.guardarPersonaje(personaje);
+	public ResponseEntity<Personaje> guardarPersonaje(@RequestBody Personaje personaje) {
+		//return ResponseEntity.status(HttpStatus.CREATED).body(personajeService.guardarPersonaje(personaje));
+		Personaje personajeNew = personajeService.guardarPersonaje(personaje);
+		return ResponseEntity.ok(personajeNew);
+		//personajeService.guardarPersonaje(personaje);
 	}
 	
-	@GetMapping (path = "/characters/{nombre}")
+	@GetMapping (path = "/{nombre}")
 	public Optional<Personaje> buscarPersonajePorNombre(@PathVariable("nombre") String nombre){
 		return Optional.ofNullable(this.personajeService.buscarPorNombre(nombre));
 	}

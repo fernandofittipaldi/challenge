@@ -1,18 +1,29 @@
 package com.disney.challenge.entities;
 
-//import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
-//import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import lombok.Data;
+
+@Data
 @Entity
-//@Data
 public class Personaje {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(unique = true, nullable = false)
-	private int id;
+	private Integer idPersonaje;
 	
 	private String imagen;
 	
@@ -23,13 +34,31 @@ public class Personaje {
 	private double peso;
 	
 	private String historia;
+	
+	@JsonManagedReference
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "PersonajePelicula",
+    joinColumns = {
+            @JoinColumn(name = "idPersonaje", nullable = false)},
+    inverseJoinColumns = {
+            @JoinColumn(name = "idPelicula", nullable = false)})
+    private List<Pelicula> peliculasID;
 
-	public int getId() {
-		return id;
+
+	public List<Pelicula> getPeliculasID() {
+		return peliculasID;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setPeliculasID(List<Pelicula> peliculasID) {
+		this.peliculasID = peliculasID;
+	}
+
+	public Integer getIdPersonaje() {
+		return idPersonaje;
+	}
+
+	public void setIdPersonaje(Integer idPersonaje) {
+		this.idPersonaje = idPersonaje;
 	}
 
 	public String getImagen() {
@@ -71,8 +100,6 @@ public class Personaje {
 	public void setHistoria(String historia) {
 		this.historia = historia;
 	}
-	
-	//private ArrayList<Pelicula> peliculas;
 	
 	
 
