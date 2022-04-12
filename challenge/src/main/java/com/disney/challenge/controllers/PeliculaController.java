@@ -16,7 +16,7 @@ import com.disney.challenge.entities.Pelicula;
 import com.disney.challenge.services.PeliculaService;
 
 @RestController
-@RequestMapping("/pelicula")
+@RequestMapping("/movies")
 public class PeliculaController {
 	@Autowired
 	PeliculaService peliculaService; 

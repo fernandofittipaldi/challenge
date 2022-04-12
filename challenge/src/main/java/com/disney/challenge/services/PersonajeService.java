@@ -25,6 +25,14 @@ public class PersonajeService {
 		return personajeRepository.findByNombre(nombre);
 	}
 	
+	public Personaje buscarPorEdad(int edad){
+		return personajeRepository.findByEdad(edad);
+	}
+	
+	public Personaje buscarPorPeso(double peso){
+		return personajeRepository.findByPeso(peso);
+	}
+		
 	public boolean eliminarPersonaje(int id) {
 		boolean resultado = false;
 		

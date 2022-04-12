@@ -36,9 +36,19 @@ public class PersonajeController {
 	}
 	
 	@GetMapping (path = "/characters/{nombre}")
-	public Optional<Personaje> obtenerPersonajePorNombre(@PathVariable("nombre") String nombre){
+	public Optional<Personaje> buscarPersonajePorNombre(@PathVariable("nombre") String nombre){
 		return Optional.ofNullable(this.personajeService.buscarPorNombre(nombre));
 	}
+	
+//	@GetMapping (path = "/characters/{peso}")
+//	public Optional<Personaje> buscarPersonajePorPeso(@PathVariable("peso") double peso){
+//		return Optional.ofNullable(this.personajeService.buscarPorPeso(peso));
+//	}
+//	
+//	@GetMapping (path = "/characters/{edad}")
+//	public Optional<Personaje> buscarPersonajePorEdad(@PathVariable("edad") int edad){
+//		return Optional.ofNullable(this.personajeService.buscarPorEdad(edad));
+//	}
 	
 	@DeleteMapping (path = "/{id}")
 	public String eliminarPersonajePorId(@PathVariable("id") int id) {

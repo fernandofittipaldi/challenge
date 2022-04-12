@@ -12,4 +12,8 @@ public interface PersonajeRepository extends CrudRepository<Personaje, Integer> 
 	
 	public abstract Personaje findByNombre(String nombre);
 	
+	public abstract Personaje findByEdad(int edad);
+	
+	public abstract Personaje findByPeso(double peso);
+	
 }
