@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.Data;
@@ -34,7 +35,7 @@ public class Personaje {
 	private double peso;
 	
 	private String historia;
-	
+		
 	@JsonManagedReference
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "PersonajePelicula",
@@ -43,7 +44,6 @@ public class Personaje {
     inverseJoinColumns = {
             @JoinColumn(name = "idPelicula", nullable = false)})
     private List<Pelicula> peliculasID;
-
 
 	public List<Pelicula> getPeliculasID() {
 		return peliculasID;

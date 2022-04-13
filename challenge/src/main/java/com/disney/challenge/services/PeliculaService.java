@@ -12,7 +12,7 @@ import com.disney.challenge.repositories.PeliculaRepository;
 @Service
 public class PeliculaService {
 	@Autowired
-	PeliculaRepository peliculaRepository;
+	private PeliculaRepository peliculaRepository;
 	
 	public ArrayList<Pelicula> obtenerPeliculas(){
 		return (ArrayList<Pelicula>) peliculaRepository.findAll();

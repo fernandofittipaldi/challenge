@@ -15,16 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.disney.challenge.entities.Personaje;
-import com.disney.challenge.repositories.PersonajeRepository;
 import com.disney.challenge.services.PersonajeService;
 
-import antlr.collections.List;
 
 @RestController
 @RequestMapping("/characters")
 public class PersonajeController {
 	@Autowired
-	PersonajeService personajeService; 
+	private PersonajeService personajeService; 
 	
 	@GetMapping()
 	public ArrayList<Personaje> obtenerPersonajes(){
@@ -44,15 +42,15 @@ public class PersonajeController {
 		return Optional.ofNullable(this.personajeService.buscarPorNombre(nombre));
 	}
 	
-//	@GetMapping (path = "/characters/{peso}")
-//	public Optional<Personaje> buscarPersonajePorPeso(@PathVariable("peso") double peso){
-//		return Optional.ofNullable(this.personajeService.buscarPorPeso(peso));
-//	}
-//	
-//	@GetMapping (path = "/characters/{edad}")
-//	public Optional<Personaje> buscarPersonajePorEdad(@PathVariable("edad") int edad){
-//		return Optional.ofNullable(this.personajeService.buscarPorEdad(edad));
-//	}
+	@GetMapping (path = "/characters/{peso}")
+	public Optional<Personaje> buscarPersonajePorPeso(@PathVariable("peso") double peso){
+		return Optional.ofNullable(this.personajeService.buscarPorPeso(peso));
+	}
+	
+	@GetMapping (path = "/characters/{edad}")
+	public Optional<Personaje> buscarPersonajePorEdad(@PathVariable("edad") int edad){
+		return Optional.ofNullable(this.personajeService.buscarPorEdad(edad));
+	}
 	
 	@DeleteMapping (path = "/{id}")
 	public String eliminarPersonajePorId(@PathVariable("id") int id) {

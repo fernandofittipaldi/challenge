@@ -13,7 +13,7 @@ import com.disney.challenge.services.GeneroService;
 @RequestMapping("/genero")
 public class GeneroController {
 	@Autowired
-	GeneroService generoService;
+	private GeneroService generoService;
 	
 	@PostMapping()
 	public Genero cargarGenero(@RequestBody Genero genero) {

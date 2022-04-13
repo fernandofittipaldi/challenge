@@ -11,7 +11,7 @@ import com.disney.challenge.repositories.GeneroRepository;
 @Service
 public class GeneroService {
 	@Autowired
-	GeneroRepository generoRepository;
+	private GeneroRepository generoRepository;
 
 	public Genero cargarGenero(Genero genero) {
 		return generoRepository.save(genero);

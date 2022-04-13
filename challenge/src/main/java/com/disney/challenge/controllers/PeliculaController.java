@@ -19,7 +19,7 @@ import com.disney.challenge.services.PeliculaService;
 @RequestMapping("/movies")
 public class PeliculaController {
 	@Autowired
-	PeliculaService peliculaService; 
+	private PeliculaService peliculaService; 
 	
 	@GetMapping()
 	public ArrayList<Pelicula> obtenerPeliculas(){

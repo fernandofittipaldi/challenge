@@ -11,7 +11,7 @@ import com.disney.challenge.repositories.PersonajeRepository;
 @Service
 public class PersonajeService {
 	@Autowired
-	PersonajeRepository personajeRepository;
+	private PersonajeRepository personajeRepository;
 	
 	public ArrayList<Personaje> obtenerPersonajes(){
 		return (ArrayList<Personaje>) personajeRepository.findAll();
